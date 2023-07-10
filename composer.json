@@ -1,0 +1,26 @@
+{
+    "name": "aranytoth/yii2-onesignal",
+    "description": "This is composer dependency update based on vasadibt/yii2-onesignal",
+    "keywords": ["yii2","extension","onesignal","restful","api", "notifications"],
+    "homepage": "https://github.com/aranytoth/yii2-onesignal",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Arany-Tóth Tibor",
+            "email": "aranytoth.tibor@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "symfony/options-resolver": "^3.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "aranytoth\\onesignal\\": "src"
+        }
+    }
+}
