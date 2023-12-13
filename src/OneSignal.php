@@ -1,13 +1,13 @@
 <?php
 
-namespace vasadibt\onesignal;
+namespace aranytoth\onesignal;
 
 use GuzzleHttp\Client;
-use vasadibt\onesignal\resolver\ResolverFactory;
-use vasadibt\onesignal\service\Apps;
-use vasadibt\onesignal\service\Devices;
-use vasadibt\onesignal\service\Notifications;
-use vasadibt\onesignal\service\Request;
+use aranytoth\onesignal\resolver\ResolverFactory;
+use aranytoth\onesignal\service\Apps;
+use aranytoth\onesignal\service\Devices;
+use aranytoth\onesignal\service\Notifications;
+use aranytoth\onesignal\service\Request;
 use Yii;
 use yii\base\Component;
 use yii\log\FileTarget;
@@ -34,7 +34,7 @@ class OneSignal extends Component
     public $logTarget = [
         'class' => '\yii\log\FileTarget',
         'logFile' => '@runtime/logs/onesignal.log',
-        'categories' => ['vasadibt\onesignal\*'],
+        'categories' => ['aranytoth\onesignal\*'],
         'logVars' => [],
     ];
 
@@ -47,9 +47,9 @@ class OneSignal extends Component
      * @var array
      */
     private $services = [
-        'apps' => 'vasadibt\onesignal\service\Apps',
-        'devices' => 'vasadibt\onesignal\service\Devices',
-        'notifications' => 'vasadibt\onesignal\service\Notifications',
+        'apps' => 'aranytoth\onesignal\service\Apps',
+        'devices' => 'aranytoth\onesignal\service\Devices',
+        'notifications' => 'aranytoth\onesignal\service\Notifications',
     ];
 
     /**
@@ -72,7 +72,7 @@ class OneSignal extends Component
      *
      * @param string $name
      *
-     * @return \vasadibt\onesignal\service\Request
+     * @return \aranytoth\onesignal\service\Request
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\base\UnknownPropertyException
      */
@@ -95,7 +95,7 @@ class OneSignal extends Component
      * @param $message
      * @param $category
      */
-    public function log($message, $category = 'vasadibt\onesignal')
+    public function log($message, $category = 'aranytoth\onesignal')
     {
         if($this->log){
             Yii::info($message, $category);

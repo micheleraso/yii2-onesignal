@@ -1,6 +1,6 @@
 <?php
 
-namespace vasadibt\onesignal\resolver;
+namespace aranytoth\onesignal\resolver;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use yii\base\BaseObject;

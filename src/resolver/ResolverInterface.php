@@ -1,6 +1,6 @@
 <?php
 
-namespace vasadibt\onesignal\resolver;
+namespace aranytoth\onesignal\resolver;
 
 /**
  * Interface ResolverInterface

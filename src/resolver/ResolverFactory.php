@@ -1,8 +1,8 @@
 <?php
 
-namespace vasadibt\onesignal\resolver;
+namespace aranytoth\onesignal\resolver;
 
-use vasadibt\onesignal\OneSignal;
+use aranytoth\onesignal\OneSignal;
 
 /**
  * Class ResolverFactory
