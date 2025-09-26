@@ -15,7 +15,7 @@
     ],
     "require": {
         "yiisoft/yii2": "~2.0.0",
-        "symfony/options-resolver": "^3.0",
+        "symfony/options-resolver": "^5.4|^6.0|^7.0",
         "guzzlehttp/guzzle": "^7.0"
     },
     "autoload": {
