@@ -1,13 +1,13 @@
 <?php
 
-namespace aranytoth\onesignal;
+namespace micheleraso\onesignal;
 
 use GuzzleHttp\Client;
-use aranytoth\onesignal\resolver\ResolverFactory;
-use aranytoth\onesignal\service\Apps;
-use aranytoth\onesignal\service\Devices;
-use aranytoth\onesignal\service\Notifications;
-use aranytoth\onesignal\service\Request;
+use micheleraso\onesignal\resolver\ResolverFactory;
+use micheleraso\onesignal\service\Apps;
+use micheleraso\onesignal\service\Devices;
+use micheleraso\onesignal\service\Notifications;
+use micheleraso\onesignal\service\Request;
 use Yii;
 use yii\base\Component;
 use yii\log\FileTarget;
@@ -34,7 +34,7 @@ class OneSignal extends Component
     public $logTarget = [
         'class' => '\yii\log\FileTarget',
         'logFile' => '@runtime/logs/onesignal.log',
-        'categories' => ['aranytoth\onesignal\*'],
+        'categories' => ['micheleraso\onesignal\*'],
         'logVars' => [],
     ];
 
@@ -47,9 +47,9 @@ class OneSignal extends Component
      * @var array
      */
     private $services = [
-        'apps' => 'aranytoth\onesignal\service\Apps',
-        'devices' => 'aranytoth\onesignal\service\Devices',
-        'notifications' => 'aranytoth\onesignal\service\Notifications',
+        'apps' => 'micheleraso\onesignal\service\Apps',
+        'devices' => 'micheleraso\onesignal\service\Devices',
+        'notifications' => 'micheleraso\onesignal\service\Notifications',
     ];
 
     /**
@@ -72,7 +72,7 @@ class OneSignal extends Component
      *
      * @param string $name
      *
-     * @return \aranytoth\onesignal\service\Request
+     * @return \micheleraso\onesignal\service\Request
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\base\UnknownPropertyException
      */
@@ -95,7 +95,7 @@ class OneSignal extends Component
      * @param $message
      * @param $category
      */
-    public function log($message, $category = 'aranytoth\onesignal')
+    public function log($message, $category = 'micheleraso\onesignal')
     {
         if($this->log){
             Yii::info($message, $category);

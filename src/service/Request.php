@@ -6,11 +6,11 @@
  * Time: 13:28
  */
 
-namespace aranytoth\onesignal\service;
+namespace micheleraso\onesignal\service;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
-use aranytoth\onesignal\OneSignal;
+use micheleraso\onesignal\OneSignal;
 use yii\base\BaseObject;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;

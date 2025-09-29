@@ -1,6 +1,6 @@
 <?php
 
-namespace aranytoth\onesignal\resolver;
+namespace micheleraso\onesignal\resolver;
 
 /**
  * Interface ResolverInterface

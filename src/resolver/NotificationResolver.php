@@ -1,10 +1,10 @@
 <?php
 
-namespace aranytoth\onesignal\resolver;
+namespace micheleraso\onesignal\resolver;
 
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use aranytoth\onesignal\OneSignal;
+use micheleraso\onesignal\OneSignal;
 use yii\base\BaseObject;
 
 /**

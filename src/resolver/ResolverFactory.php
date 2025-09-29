@@ -1,8 +1,8 @@
 <?php
 
-namespace aranytoth\onesignal\resolver;
+namespace micheleraso\onesignal\resolver;
 
-use aranytoth\onesignal\OneSignal;
+use micheleraso\onesignal\OneSignal;
 
 /**
  * Class ResolverFactory
