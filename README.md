@@ -1,46 +1,49 @@
 Yii2 Onesignal api
 ==================
-This is a restful api to onesignal.
-
-[![Total Downloads](https://poser.pugx.org/vasadibt/yii2-onesignal/downloads)](https://packagist.org/packages/vasadibt/yii2-onesignal)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/vasadibt/yii2-onesignal/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/vasadibt/yii2-onesignal/?branch=master)
+This is a restful api to onesignal (fork of vasadibt/yii2-onesignal).
 
 Installation
 ------------
 
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
+Add the repository and the requirement to your `composer.json`:
 
-Either run
-
+```json
+"repositories": [
+    {"type": "vcs", "url": "https://github.com/micheleraso/yii2-onesignal.git"}
+],
+"require": {
+    "micheleraso/yii2-onesignal": "^1.1"
+}
 ```
-php composer.phar require --prefer-dist vasadibt/yii2-onesignal "dev-master"
-```
-
-or add
-
-```
-"vasadibt/yii2-onesignal": "dev-master"
-```
-
-to the require section of your `composer.json` file.
-
 
 Config
 -----
 
-Once the extension is installed, you have to configure the api component:
+Once the extension is installed, configure the api component:
 
 ```php
 'components' => [
     'onesignal' => [
-        'class' => '\vasadibt\onesignal\OneSignal',
-        'appId' => 'your-app-id-hash-code',
-        'appAuthKey' => 'SetYourAppAuthKey',
-        'userAuthKey' => 'SetYourUserAuthKey',
-        'enabled' => YII_ENV_PROD ? true : false,
+        'class' => \micheleraso\onesignal\OneSignal::class,
+        'appId' => 'your-app-id',
+        'appAuthKey' => 'your-rest-api-key',
+        'userAuthKey' => 'your-user-auth-key', // only for the "apps" endpoints
+        'enabled' => true,
     ],
 ],
 ```
+
+Optional settings:
+
+- `apiUrl` (default `https://onesignal.com/api/v1`): legacy endpoint, works with the legacy REST API keys.
+  Apps created with the new App API keys can use `https://api.onesignal.com`.
+- `client`: Guzzle options merged over the defaults (`timeout` 5 s, `connect_timeout` 3 s),
+  or a `GuzzleHttp\ClientInterface` instance. TLS certificates are verified (Guzzle default):
+  if the server has no CA bundle, fix the server or pass `'client' => ['verify' => '/path/to/cacert.pem']`.
+- `log` (default `true`): writes requests and responses to `@runtime/logs/onesignal.log`,
+  payload included. Set it to `false` if the payload contains personal data.
+
+API errors (including timeouts) are thrown as `yii\base\Exception`.
 
 Usage
 -----
@@ -62,7 +65,9 @@ Yii::$app->onesignal->notifications->add([
 
 
 Yii::$app->onesignal->notifications->add([
-    'included_segments' => ['All'],
+    'included_segments' => ['Subscribed Users'],
     'contents' => ["en" => 'New message'],
 ]);
 ```
+
+`contents` (and `headings`, if used) must always include the `en` key.

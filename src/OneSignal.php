@@ -3,6 +3,7 @@
 namespace micheleraso\onesignal;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use micheleraso\onesignal\resolver\ResolverFactory;
 use micheleraso\onesignal\service\Apps;
 use micheleraso\onesignal\service\Devices;
@@ -39,9 +40,26 @@ class OneSignal extends Component
     ];
 
     /**
-     * @var Client|array
+     * HTTP client used for the API calls.
+     *
+     * - a `GuzzleHttp\ClientInterface` instance is used as is;
+     * - an array is treated as Guzzle request options, merged over DEFAULT_CLIENT_OPTIONS
+     *   (e.g. `['timeout' => 10]`, or `['verify' => '/path/to/cacert.pem']`);
+     * - null uses DEFAULT_CLIENT_OPTIONS.
+     *
+     * TLS certificate verification follows Guzzle's default (enabled).
+     *
+     * @var ClientInterface|array|null
      */
     public $client;
+
+    /**
+     * Default Guzzle options: a slow or unreachable OneSignal must not block the caller.
+     */
+    const DEFAULT_CLIENT_OPTIONS = [
+        'timeout' => 5,
+        'connect_timeout' => 3,
+    ];
 
     /**
      * @var array
@@ -57,10 +75,14 @@ class OneSignal extends Component
      */
     public function init()
     {
-        $this->client = new Client([
-            'verify' => false,
-            'debug' => false
-        ]);
+        parent::init();
+
+        if (!$this->client instanceof ClientInterface) {
+            $this->client = new Client(array_merge(
+                self::DEFAULT_CLIENT_OPTIONS,
+                is_array($this->client) ? $this->client : []
+            ));
+        }
 
         if (!empty($this->logTarget)) {
             Yii::$app->getLog()->targets['onesignal'] = Yii::createObject($this->logTarget);
