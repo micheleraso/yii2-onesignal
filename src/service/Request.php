@@ -88,7 +88,7 @@ class Request extends BaseObject
 
         $queryKey = in_array($method, [static::GET, static::DELETE]) ? 'query' : 'json';
         $options = [
-            'headers' => ['Authorization' => 'Basic ' . $this->basicAuthKey],
+            'headers' => ['Authorization' => $this->api->authScheme . ' ' . $this->basicAuthKey],
             $queryKey => array_merge(['app_id' => $this->api->appId], $data),
         ];
 

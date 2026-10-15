@@ -21,6 +21,13 @@ use yii\log\FileTarget;
 class OneSignal extends Component
 {
     public $apiUrl = 'https://onesignal.com/api/v1';
+    /**
+     * Scheme of the Authorization header: `Basic` for the legacy REST API keys,
+     * `Key` for the App API keys introduced by OneSignal in November 2024.
+     *
+     * @var string
+     */
+    public $authScheme = 'Basic';
     public $appId;
     public $appAuthKey;
     public $userAuthKey;

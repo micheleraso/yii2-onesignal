@@ -12,7 +12,7 @@ Add the repository and the requirement to your `composer.json`:
     {"type": "vcs", "url": "https://github.com/micheleraso/yii2-onesignal.git"}
 ],
 "require": {
-    "micheleraso/yii2-onesignal": "^1.1"
+    "micheleraso/yii2-onesignal": "^1.2"
 }
 ```
 
@@ -35,8 +35,9 @@ Once the extension is installed, configure the api component:
 
 Optional settings:
 
-- `apiUrl` (default `https://onesignal.com/api/v1`): legacy endpoint, works with the legacy REST API keys.
-  Apps created with the new App API keys can use `https://api.onesignal.com`.
+- `apiUrl` (default `https://onesignal.com/api/v1`) and `authScheme` (default `Basic`): fit the legacy REST API keys.
+  With the App API keys (November 2024 onwards, the only ones available in new apps) use
+  `'apiUrl' => 'https://api.onesignal.com'` and `'authScheme' => 'Key'`.
 - `client`: Guzzle options merged over the defaults (`timeout` 5 s, `connect_timeout` 3 s),
   or a `GuzzleHttp\ClientInterface` instance. TLS certificates are verified (Guzzle default):
   if the server has no CA bundle, fix the server or pass `'client' => ['verify' => '/path/to/cacert.pem']`.
